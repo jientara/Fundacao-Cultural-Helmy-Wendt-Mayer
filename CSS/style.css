@@ -184,9 +184,12 @@ body {
 }
 
 .logo-img {
-  width: 40px;   /* ajuste conforme necessário */
-  height: auto;
   margin-right: .5rem;
+  display: block;
+  max-width: 40px;
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
 }
 
 .logo-text {
@@ -265,10 +268,11 @@ main {
   justify-content: space-between;
 }
 
-.service-card h3 {
+.service-card h2 {
   font-size: 1.5rem;
   margin-bottom: 1.2rem;
   color: var(--primary-color);
+  font-weight: 700;
 }
 
 .service-card p {
@@ -330,7 +334,12 @@ main {
   margin-left: auto;
   margin-right: auto;
 }
-.footer-section h4 { margin-bottom: 1rem; color: var(--accent-color); }
+.footer h2 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: var(--white);
+  font-weight: 700;
+}
 .footer-section p { color: #fff; text-decoration: none; line-height: 1.7; }
 .footer-section a {
   color: var(--accent-color) !important;
@@ -395,6 +404,11 @@ body {
 
 /* Layout responsivo */
 @media (max-width: 768px) {
+  .logo-img {
+    width: 36px;
+    height: 36px;
+    max-width: 36px;
+  }
     body {
         font-size: 16px;
     }
