@@ -122,16 +122,16 @@
 
 
 :root {
-  --primary-color: #006837;      /* Verde bandeira/brasão */
-  --secondary-color: #ffd600;    /* Amarelo Brasil */
-  --accent-color: #003366;       /* Azul escuro Brasil/Canoinhas */
-  --text-dark: #003366;          /* Azul escuro */
-  --text-light: #006837;         /* Verde para textos leves */
+  --primary-color: #004d29;      /* Verde bandeira/brasão mais escuro para melhor contraste */
+  --secondary-color: #cc9900;    /* Amarelo Brasil mais escuro para melhor contraste */
+  --accent-color: #002244;       /* Azul escuro Brasil/Canoinhas ajustado */
+  --text-dark: #002244;          /* Azul escuro ajustado */
+  --text-light: #004d29;         /* Verde para textos leves ajustado */
   --white: #fff;
   --light-bg: #e6f2e3;           /* Verde claro Brasil */
   --shadow: 0 4px 6px rgba(0,0,0,0.1);
   --radius: 16px;
-  --red-canoinhas: #d7261e;      /* Vermelho bandeira Canoinhas */
+  --red-canoinhas: #b30000;      /* Vermelho bandeira Canoinhas ajustado */
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
@@ -160,6 +160,21 @@ body {
   display: flex; justify-content: space-between; align-items: center;
 }
 
+/* Regras adicionais para dispositivos móveis (melhorar legibilidade e evitar overflow) */
+@media (max-width: 820px) {
+  .nav-container { padding: 0 1rem; }
+  .logo-text { white-space: normal; font-size: 0.95rem; line-height: 1.1; }
+  .logo-img { width: 36px; height: auto; }
+  .hero h1 { font-size: 1.6rem; }
+  .hero p { font-size: 0.98rem; }
+  .services-grid { grid-template-columns: 1fr; gap: 1rem; margin-top: 1.25rem; }
+  .service-card { padding: 1rem; border-radius: 12px; }
+  .nav-menu { padding: 0.75rem 1rem; }
+  .section .container > p, .section .container > ul { font-size: 1rem; padding-left: 0.6rem; padding-right: 0.6rem; }
+  main { padding: 0 1rem; }
+  .footer-content { padding-left: 1rem; padding-right: 1rem; }
+}
+
 .logo {
   display: flex;
   align-items: center;
@@ -179,15 +194,9 @@ body {
 }
 
 .logo::before {
-  content: "";
-  display: inline-block;
-  width: 32px; /* largura da imagem */
-  height: 32px; /* altura da imagem */
-  margin-right: .5rem;
-  background-image: url("Imagens/BrasaoRepublica.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+  /* Não usar pseudo-elemento quando já há uma imagem no DOM (evita duplicação)
+     escondemos o ::before e usamos a <img class="logo-img"> para controle total */
+  display: none;
 }
 
 .menu__toggle, .mobile-menu-btn {
@@ -209,16 +218,70 @@ body {
   }
   .nav-menu.active { display: flex; }
 }
-main { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+main { 
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  overflow-x: hidden;
+}
 .section { padding: 4rem 0; }
 .section-title { text-align: center; font-size: 2.5rem; color: var(--primary-color); margin-bottom: 1rem; font-weight: 700; }
 .section-subtitle { text-align: center; color: var(--text-light); margin-bottom: 3rem; font-size: 1.1rem; }
 .services-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 3rem;
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 1200px) {
+  .services-grid {
+    grid-template-columns: repeat(2, minmax(280px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .services-grid {
+    grid-template-columns: minmax(250px, 1fr);
+    padding: 0 1rem;
+  }
 }
 .service-card {
-  background: var(--white); padding: 2rem; border-radius: var(--radius); box-shadow: var(--shadow); text-align: center;
-  transition: transform .3s, box-shadow .3s; border: 3px solid transparent;
+  background: var(--white);
+  padding: 2.5rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  text-align: center;
+  transition: transform .3s, box-shadow .3s;
+  border: 3px solid transparent;
+  height: 100%;
+  min-height: 360px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.service-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1.2rem;
+  color: var(--primary-color);
+}
+
+.service-card p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.service-icon {
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+  display: block;
+  color: var(--primary-color);
 }
 .service-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.15); border-color: var(--accent-color); }
 .service-icon { font-size: 3rem; margin-bottom: 1rem; display: block; }
@@ -342,10 +405,90 @@ body {
 }
 
 /* Cards */
-.card {
-    background: #f4f4f4;
-    padding: 15px;
-    margin: 10px 0;
-    border-radius: 10px;
-    box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+.hero {
+  /* Hero com altura mais flexível para não ocupar metade da tela em mobile */
+  min-height: auto;
+  display: block;
+  background: var(--light-bg);
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+.hero .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.25rem 2rem;
+  overflow: hidden;
+}
+.hero h1 {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin: 0 0 1rem;
+  text-align: center;
+  font-weight: 800;
+}
+.hero p {
+  font-size: 1rem;
+  color: var(--text-light);
+  margin: 0 0 1.25rem;
+  line-height: 1.6;
+  text-align: left;
+}
+
+/* Estilos para a seção do mapa */
+.map-section {
+  background: var(--white);
+  padding: 4rem 2rem;
+  margin: 2rem auto;
+}
+
+.map-section .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: var(--light-bg);
+  padding: 2rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.map-section h2 {
+  color: var(--primary-color);
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.map-section p {
+  color: var(--text-dark);
+  font-size: 1.2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.map-section iframe {
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin: 0 auto;
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  border: 3px solid var(--primary-color);
+}
+
+@media (max-width: 768px) {
+  .map-section {
+    padding: 2rem 1rem;
+  }
+  
+  .map-section .container {
+    padding: 1.5rem;
+  }
+  
+  .map-section h2 {
+    font-size: 1.8rem;
+  }
+  
+  .map-section p {
+    font-size: 1.1rem;
+  }
 }
