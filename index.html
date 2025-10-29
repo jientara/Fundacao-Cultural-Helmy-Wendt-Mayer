@@ -96,6 +96,28 @@
     </div>
   </div>
 </section>
+<section class="feedback-section" aria-label="Formulário de Feedback">
+  <div class="container">
+    <h2>Deixe seu Feedback</h2>
+    <p>Sua opinião é importante para nós. Preencha o formulário abaixo.</p>
+        <form id="feedbackForm" action="mailto:kaua.jientara@alunos.sc.senac.br?subject=Feedback%20Site%20Fundação%20Cultural" method="post" enctype="text/plain">
+      <div class="form-group">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="mensagem">Mensagem:</label>
+        <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
+      </div>
+      <button type="submit" class="btn-submit">Enviar Feedback</button>
+    </form>
+    <div id="feedback-message" style="display: none;" role="alert" aria-live="assertive"></div>
+  </div>
+</section>
   </main>
 <footer class="footer">
   <div class="footer-content">
@@ -167,6 +189,37 @@
         });
       });
     }
-   </script>
- </body>
+// ALTERAÇÃO 3: Adicionado JavaScript para o feedback do formulário
+    const feedbackForm = document.getElementById('feedbackForm');
+    const feedbackMessage = document.getElementById('feedback-message');
+
+    if (feedbackForm && feedbackMessage) {
+        feedbackForm.addEventListener('submit', function(e) {
+            
+            // O navegador tentará abrir o cliente de e-mail.
+            
+            // Exibe a mensagem de sucesso na tela após um breve atraso
+            setTimeout(() => {
+                // Oculta o formulário (o layout do seu formulário deve ser ajustado no CSS 
+                // para que isso funcione bem, se ele não estiver com display:block/flex)
+                feedbackForm.style.display = 'none'; 
+                
+                // Exibe a mensagem
+                feedbackMessage.textContent = '✅ Feedback enviado com sucesso! Obrigado por compartilhar sua opinião.';
+                feedbackMessage.style.display = 'block';
+                
+                // (Opcional) Recarrega a página ou limpa a mensagem após um tempo
+                setTimeout(() => {
+                    feedbackMessage.style.display = 'none';
+                    // Tenta exibir o formulário novamente após o feedback
+                    feedbackForm.style.display = ''; // Volta ao display padrão (block/flex)
+                    feedbackForm.reset(); // Limpa os campos do formulário
+                    
+                }, 7000); // Exibe a mensagem por 7 segundos
+                
+            }, 500); // Tempo de espera de 0.5 segundo
+        });
+    }
+   </script>
+ </body>
 </html>

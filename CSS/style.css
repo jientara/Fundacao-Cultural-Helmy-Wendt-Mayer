@@ -506,3 +506,92 @@ body {
     font-size: 1.1rem;
   }
 }
+
+/* ======================================= */
+/* ESTILOS PARA A SEÇÃO DE FEEDBACK (NOVA) */
+/* ======================================= */
+
+/* 1. Estilo da Seção Principal, similar ao map-section para consistência */
+.feedback-section {
+    background: var(--white); /* Fundo branco para contraste com o hero e map-section */
+    padding: 4rem 2rem; /* Espaçamento da seção */
+    margin: 2rem auto; /* Margem padrão */
+}
+
+/* 2. Estilo do Contêiner Interno (o "cartão" do formulário) */
+.feedback-section .container {
+    max-width: 800px; /* Largura para o conteúdo do formulário */
+    margin: 0 auto;
+    background: var(--light-bg); /* Fundo leve para destaque */
+    padding: 3rem; /* Espaçamento interno maior */
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    display: flex; /* Adicionado display flex para melhor controle de alinhamento */
+    flex-direction: column;
+}
+
+/* 3. Estilo dos Títulos e Parágrafos (usando classes genéricas de seção) */
+.feedback-section h2 {
+    color: var(--primary-color);
+    font-size: 2.2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 0.8rem;
+}
+
+.feedback-section p {
+    color: var(--text-dark);
+    font-size: 1.1rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* 4. Garantir que o botão do formulário use o estilo que você já tem (.btn ou .submit-btn) */
+.feedback-section .btn-submit {
+    /* Mapeia a classe "btn-submit" (do HTML) para o estilo ".submit-btn" (do CSS) */
+    @extend .submit-btn; /* Se estiver usando SASS/LESS */
+    /* Caso contrário, apenas garanta que as propriedades sejam as mesmas: */
+    background: var(--primary-color); 
+    color: var(--white); 
+    padding: 1rem 2rem; 
+    border: none; 
+    border-radius: 8px; 
+    font-size: 1.1rem; 
+    font-weight: 600; 
+    cursor: pointer; 
+    transition: background .3s; 
+    width: 100%;
+}
+
+.feedback-section .btn-submit:hover {
+    background: var(--secondary-color);
+}
+
+
+/* 5. Responsividade para a seção de feedback */
+@media (max-width: 768px) {
+    .feedback-section {
+        padding: 2rem 1rem;
+        margin: 1rem auto;
+    }
+    .feedback-section .container {
+        padding: 1.5rem;
+    }
+    .feedback-section h2 {
+        font-size: 1.8rem;
+    }
+}
+
+/* Estilo para a mensagem de feedback que aparece (para #feedback-message) */
+#feedback-message {
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    background-color: #d4edda; /* Verde claro */
+    border: 1px solid #c3e6cb;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
