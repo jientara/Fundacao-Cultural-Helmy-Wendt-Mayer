@@ -123,10 +123,10 @@
 
 :root {
   --primary-color: #004d29;      /* Verde bandeira/brasão mais escuro para melhor contraste */
-  --secondary-color: #cc9900;    /* Amarelo Brasil mais escuro para melhor contraste */
+  --secondary-color: #a17400;    /* Amarelo Brasil mais escuro para melhor contraste */
   --accent-color: #002244;       /* Azul escuro Brasil/Canoinhas ajustado */
   --text-dark: #002244;          /* Azul escuro ajustado */
-  --text-light: #004d29;         /* Verde para textos leves ajustado */
+  --text-light: #002244;         /* Verde para textos leves ajustado */
   --white: #fff;
   --light-bg: #e6f2e3;           /* Verde claro Brasil */
   --shadow: 0 4px 6px rgba(0,0,0,0.1);
@@ -342,7 +342,7 @@ main {
 }
 .footer-section p { color: #fff; text-decoration: none; line-height: 1.7; }
 .footer-section a {
-  color: var(--accent-color) !important;
+  color: var(--white) !important;
   text-decoration: underline;
   font-weight: 700;
   line-height: 1.7;

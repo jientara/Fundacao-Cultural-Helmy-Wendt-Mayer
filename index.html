@@ -14,7 +14,8 @@
   <meta content="website" property="og:type"/>
   <meta content="pt_BR" property="og:locale"/>
   <link href="CSS/style.css" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'>
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"></noscript>
  </head>
  <body>
   <a class="skip-link sr-only" href="#conteudo" tabindex="0">
@@ -23,7 +24,7 @@
 <header class="header" role="banner">
   <div class="nav-container">
     <div class="logo">
-      <img src="Imagens/BrasaoRepublica.png" alt="Logo" class="logo-img" width="40" height="40">
+      <img src="Imagens/BrasaoRepublica.png" alt="Brasão da República Federativa do Brasil, usado como logo da fundação" class="logo-img" width="40" height="40">
       <span class="logo-text">Fundação Cultural Helmy Wendt Mayer</span>
     </div>
     <nav aria-label="Menu principal" class="menu">
@@ -102,12 +103,12 @@
       <h2>Redes Sociais</h2>
         <p>
           <a href="https://www.facebook.com/prefeituradecanoinhas" target="_blank" class="footer-link">
-            <img src="Imagens/facebook.png" alt="Facebook" width="36" height="36" style="vertical-align:middle;margin-right:10px;"> Facebook
+            <img src="Imagens/facebook.png" alt="" width="36" height="36" style="vertical-align:middle;margin-right:10px;"> Facebook
           </a>
         </p>
         <p>
           <a href="https://www.instagram.com/prefeituracanoinhas_oficial" target="_blank" class="footer-link">
-            <img src="Imagens/instagram.png" alt="Instagram" width="36" height="36" style="vertical-align:middle;margin-right:10px;"> Instagram
+            <img src="Imagens/instagram.png" alt="" width="36" height="36" style="vertical-align:middle;margin-right:10px;"> Instagram
           </a>
         </p>
     </div>
@@ -133,16 +134,22 @@
     © 2025 Fundação Cultural Helmy Wendt Mayer. Todos os direitos reservados.
   </div>
 </footer>
-   </div>
    <script>
-    document.getElementById('ano').textContent = new Date().getFullYear();
-      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-      const navMenu = document.getElementById('navMenu');
+    const anoEl = document.getElementById('ano');
+    if (anoEl) {
+      anoEl.textContent = new Date().getFullYear();
+    }
+
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navMenu = document.getElementById('navMenu');
+
+    if (mobileMenuBtn && navMenu) {
       mobileMenuBtn.addEventListener('click', () => {
         const isOpen = navMenu.classList.toggle('active');
         mobileMenuBtn.setAttribute('aria-expanded', isOpen);
         mobileMenuBtn.innerHTML = isOpen ? '✕' : '☰';
       });
+
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
           if (this.getAttribute('href').length > 1) {
@@ -159,7 +166,7 @@
           }
         });
       });
+    }
    </script>
-  </footer>
  </body>
 </html>
