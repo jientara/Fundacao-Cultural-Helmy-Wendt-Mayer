@@ -33,6 +33,17 @@
   transform: scale(1.04);
   box-shadow: 0 6px 24px rgba(44,85,48,0.18);
 }
+
+.grid-galeria figure {
+  margin: 0;
+}
+
+.grid-galeria figcaption {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #555;
+  margin-top: 0.5rem;
+}
 .section, .section.historia, .section.exposicoes, .section.galeria, .section.visitas, .section.curiosidades {
   background: var(--light-bg);
   border-radius: var(--radius);
