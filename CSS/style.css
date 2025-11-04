@@ -2,14 +2,14 @@
   text-align: center;
   margin-top: 2rem;
   margin-bottom: 1rem;
-  color: var(--secondary-color);
+  color: var(--primary-color);
   font-weight: 700;
 }
 .section.exposicoes h3 {
   text-align: center;
   margin-top: 2rem;
   margin-bottom: 1rem;
-  color: var(--secondary-color);
+  color: var(--primary-color);
   font-weight: 700;
 }
 /* Ajustes para página do museu */
@@ -57,7 +57,7 @@
 }
 
 .footer {
-  background: #111 !important;
+  background: var(--light-bg) !important;
   box-shadow: none !important;
 }
 .section.galeria {
@@ -70,7 +70,7 @@
   text-align: center;
 }
 .section .container > h3 {
-  color: var(--secondary-color);
+  color: var(--primary-color);
   font-weight: 700;
   margin-top: 1.5rem;
 }
@@ -134,7 +134,7 @@
 
 :root {
   --primary-color: #004d29;      /* Verde bandeira/brasão mais escuro para melhor contraste */
-  --secondary-color: #a17400;    /* Amarelo Brasil mais escuro para melhor contraste */
+  --secondary-color: #e6f2e3;    /* Amarelo Brasil mais escuro para melhor contraste */
   --accent-color: #002244;       /* Azul escuro Brasil/Canoinhas ajustado */
   --text-dark: #002244;          /* Azul escuro ajustado */
   --text-light: #002244;         /* Verde para textos leves ajustado */
@@ -164,7 +164,7 @@ body {
   color: var(--white);
   box-shadow: var(--shadow);
   position: sticky; top: 0; z-index: 999;
-  border-bottom: 4px solid var(--secondary-color);
+  border-bottom: 4px solid; color: #111;
 }
 .nav-container {
   max-width: 1200px; margin: 0 auto; padding: 0 2rem;
@@ -265,7 +265,7 @@ main {
   }
 }
 .service-card {
-  background: var(--white);
+  background: var(--light-bg);
   padding: 2.5rem;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
@@ -316,7 +316,7 @@ main {
 .event-date { background: var(--primary-color); color: var(--white); padding: .5rem 1rem; border-radius: 8px; font-weight: 600; font-size: .9rem; }
 .form, .contact-form { background: var(--white); padding: 2rem; border-radius: var(--radius); box-shadow: var(--shadow); max-width: 600px; margin: 0 auto; }
 /* Aviso próximo aos horários de funcionamento */
-.horario-aviso { color: var(--secondary-color); font-style: italic; margin-top: .75rem; font-size: .95rem; }
+.horario-aviso { color: var(--primary-color); font-weight: 700style: italic; margin-top: .75rem; font-size: .95rem; }
 .campo, .form-group { margin-bottom: 1.5rem; display: flex; flex-direction: column; }
 .campo label, .form-group label { margin-bottom: .5rem; color: var(--primary-color); font-weight: 500; }
 .campo input, .campo textarea, .form-group input, .form-group textarea {
@@ -348,7 +348,7 @@ main {
 .footer h2 {
   font-size: 1.2rem;
   margin-bottom: 1rem;
-  color: var(--white);
+  color: #111;
   font-weight: 700;
 }
 .footer-section p { color: #fff; text-decoration: none; line-height: 1.7; }
@@ -364,7 +364,7 @@ main {
   display: inline !important;
 }
 .footer-section a:hover {
-  color: #fff !important;
+  color: #111 !important;
   background: none !important;
   border-radius: 0 !important;
   padding: 0 !important;
@@ -379,7 +379,7 @@ main {
   padding: 1rem 0;
   border-top: 1px solid var(--accent-color); /* linha azul escuro */
   font-size: 1rem;
-  color: #e0e0e0;
+  color: #111;
   font-weight: bold;
 }
 
@@ -406,7 +406,7 @@ body {
 /* Footer */
 .footer {
   background: #111; /* Preto sólido */
-  color: #fff; /* Fonte branca */
+  color: #111; /* Fonte branca */
   text-align: center;
   padding: 15px;
   margin-top: 20px;
@@ -462,8 +462,6 @@ body {
 /* Estilos para a seção do mapa */
 .map-section {
   background: var(--white);
-  padding: 4rem 2rem;
-  margin: 2rem auto;
 }
 
 .map-section .container {
@@ -480,14 +478,12 @@ body {
   font-size: 2rem;
   font-weight: 700;
   text-align: center;
-  margin-bottom: 1rem;
 }
 
 .map-section p {
   color: var(--text-dark);
   font-size: 1.2rem;
   text-align: center;
-  margin-bottom: 2rem;
 }
 
 .map-section iframe {
@@ -526,7 +522,6 @@ body {
 .feedback-section {
     background: var(--white); /* Fundo branco para contraste com o hero e map-section */
     padding: 4rem 2rem; /* Espaçamento da seção */
-    margin: 2rem auto; /* Margem padrão */
 }
 
 /* 2. Estilo do Contêiner Interno (o "cartão" do formulário) */
@@ -547,14 +542,12 @@ body {
     font-size: 2.2rem;
     font-weight: 700;
     text-align: center;
-    margin-bottom: 0.8rem;
 }
 
 .feedback-section p {
     color: var(--text-dark);
     font-size: 1.1rem;
     text-align: center;
-    margin-bottom: 2rem;
 }
 
 /* 4. Garantir que o botão do formulário use o estilo que você já tem (.btn ou .submit-btn) */
@@ -583,7 +576,6 @@ body {
 @media (max-width: 768px) {
     .feedback-section {
         padding: 2rem 1rem;
-        margin: 1rem auto;
     }
     .feedback-section .container {
         padding: 1.5rem;
@@ -605,4 +597,12 @@ body {
     border: 1px solid #c3e6cb;
     border-radius: var(--radius);
     box-shadow: var(--shadow);
+}
+
+.saiba-mais {
+  display: block;
+  margin-top: 1.2rem;
+  var(--primary-color);
+  font-weight: 600;
+  font-size: 1rem;
 }
