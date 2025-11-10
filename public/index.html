@@ -194,9 +194,9 @@
 
     if (feedbackForm && feedbackMessage) {
         feedbackForm.addEventListener('submit', function(e) {
-            e.preventDefault(); // Evita o envio padrão do formulário
+            e.preventDefault();
 
-            const formData = new URLSearchParams(new FormData(feedbackForm));
+            const formData = new FormData(feedbackForm);
 
             fetch('/api/feedback', {
                 method: 'POST',
@@ -207,6 +207,7 @@
                 if (data.status === 'success') {
                     feedbackForm.style.display = 'none';
                     feedbackMessage.textContent = '✅ Feedback enviado com sucesso! Obrigado por compartilhar sua opinião.';
+                    feedbackMessage.style.color = 'green';
                     feedbackMessage.style.display = 'block';
 
                     setTimeout(() => {
@@ -214,13 +215,13 @@
                         feedbackForm.style.display = '';
                         feedbackForm.reset();
                     }, 7000);
-                } else { // Adicionado um else para tratar falhas no servidor
-                    throw new Error(data.message || 'Falha no envio do feedback.');
+                } else {
+                    throw new Error(data.message || 'Erro ao enviar feedback');
                 }
             })
             .catch(error => {
                 console.error('Erro:', error);
-                feedbackMessage.textContent = '❌ Ocorreu um erro ao enviar o feedback. Tente novamente mais tarde.';
+                feedbackMessage.textContent = '❌ Erro ao enviar feedback. Tente novamente.';
                 feedbackMessage.style.color = 'red';
                 feedbackMessage.style.display = 'block';
             });

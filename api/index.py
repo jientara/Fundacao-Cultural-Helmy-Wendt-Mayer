@@ -21,7 +21,8 @@ def init_db():
     cursor.close()
     conn.close()
 
-@app.route('/', methods=['POST'])
+@app.route('/api/feedback', methods=['POST'])
+@app.route('/feedback', methods=['POST'])
 def feedback():
     try:
         conn = psycopg2.connect(DATABASE_URL)
