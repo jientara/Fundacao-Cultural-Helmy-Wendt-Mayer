@@ -13,7 +13,7 @@
   <meta content="Conheça o patrimônio cultural de Canoinhas: museu, biblioteca e arquivo histórico." property="og:description"/>
   <meta content="website" property="og:type"/>
   <meta content="pt_BR" property="og:locale"/>
-  <link href="/CSS/style.css" rel="stylesheet"/>
+  <link href="./CSS/style.css" rel="stylesheet"/>
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'>
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"></noscript>
  </head>
@@ -24,7 +24,7 @@
 <header class="header" role="banner">
   <div class="nav-container">
     <div class="logo">
-      <img src="/Imagens/logo.png" alt="Logo do site" class="logo-img" width="40" height="40">
+      <img src="./Imagens/logo.png" alt="Logo do site" class="logo-img" width="40" height="40">
       <span class="logo-text">Fundação Cultural Helmy Wendt Mayer</span>
     </div>
     <nav aria-label="Menu principal" class="menu">
@@ -124,12 +124,12 @@
       <h2>Redes Sociais</h2>
         <p>
           <a href="https://www.facebook.com/prefeituradecanoinhas" target="_blank" class="footer-link">
-            <img src="/Imagens/facebook.png" alt="" width="36" height="36" style="vertical-align:middle;margin-right:10px;"> Facebook
+            <img src="./Imagens/facebook.png" alt="" width="36" height="36" style="vertical-align:middle;margin-right:10px;"> Facebook
           </a>
         </p>
         <p>
           <a href="https://www.instagram.com/prefeituracanoinhas_oficial" target="_blank" class="footer-link">
-            <img src="/Imagens/instagram.png" alt="" width="36" height="36" style="vertical-align:middle;margin-right:10px;"> Instagram
+            <img src="./Imagens/instagram.png" alt="" width="36" height="36" style="vertical-align:middle;margin-right:10px;"> Instagram
           </a>
         </p>
     </div>
@@ -214,8 +214,8 @@
                         feedbackForm.style.display = '';
                         feedbackForm.reset();
                     }, 7000);
-                } else {
-                    throw new Error('Falha no envio do feedback.');
+                } else { // Adicionado um else para tratar falhas no servidor
+                    throw new Error(data.message || 'Falha no envio do feedback.');
                 }
             })
             .catch(error => {
