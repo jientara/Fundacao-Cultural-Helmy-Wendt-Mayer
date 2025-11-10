@@ -34,20 +34,39 @@ class handler(BaseHTTPRequestHandler):
             
             content_length = int(self.headers.get('Content-Length', 0))
             body = self.rfile.read(content_length).decode('utf-8')
+            print(f"Body raw: {body}")
+            
             params = parse_qs(body)
+            print(f"Params parsed: {params}")
             
             nome = params.get('nome', [''])[0]
             email = params.get('email', [''])[0]
             mensagem = params.get('mensagem', [''])[0]
             
-            print(f"Inserindo: {nome}, {email}")
+            print(f"Nome: '{nome}', Email: '{email}', Mensagem: '{mensagem}'")
+            
+            if not nome or not email or not mensagem:
+                raise Exception(f"Dados vazios - nome: {bool(nome)}, email: {bool(email)}, mensagem: {bool(mensagem)}")
             
             cursor.execute(
-                "INSERT INTO feedback (nome, email, mensagem) VALUES (%s, %s, %s)",
+                "INSERT INTO feedback (nome, email, mensagem) VALUES (%s, %s, %s) RETURNING id",
                 (nome, email, mensagem)
             )
             
+            inserted_id = cursor.fetchone()[0]
+            print(f"Registro inserido com ID: {inserted_id}")
+            
             conn.commit()
+            
+            # Verificar o registro inserido
+            cursor.execute("SELECT nome, email, mensagem FROM feedback WHERE id = %s", (inserted_id,))
+            registro = cursor.fetchone()
+            print(f"Registro salvo: nome='{registro[0]}', email='{registro[1]}', mensagem='{registro[2]}'")
+            
+            cursor.execute("SELECT COUNT(*) FROM feedback")
+            total = cursor.fetchone()[0]
+            print(f"Total de registros: {total}")
+            
             cursor.close()
             conn.close()
             print("Sucesso!")
@@ -56,7 +75,7 @@ class handler(BaseHTTPRequestHandler):
             self.send_header('Content-Type', 'application/json')
             self.send_header('Access-Control-Allow-Origin', '*')
             self.end_headers()
-            self.wfile.write(json.dumps({'status': 'success'}).encode())
+            self.wfile.write(json.dumps({'status': 'success', 'id': inserted_id}).encode())
         except Exception as e:
             print(f"ERRO: {type(e).__name__}: {str(e)}")
             import traceback
