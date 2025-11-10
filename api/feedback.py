@@ -8,30 +8,40 @@ class handler(BaseHTTPRequestHandler):
     def do_POST(self):
         print("Requisição POST recebida")
         try:
+            DATABASE_URL = os.environ.get('DATABASE_URL')
+            if not DATABASE_URL:
+                raise Exception("DATABASE_URL não configurada no Vercel")
+            
+            print(f"Conectando ao banco... (URL: {DATABASE_URL[:30]}...)")
+            # Adicionar SSL para Supabase
+            conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+            cursor = conn.cursor()
+            print("Conexão estabelecida!")
+            
+            # Criar tabela se não existir
+            print("Verificando tabela...")
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS feedback (
+                    id SERIAL PRIMARY KEY,
+                    nome TEXT NOT NULL,
+                    email TEXT NOT NULL,
+                    mensagem TEXT NOT NULL,
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                )
+            ''')
+            conn.commit()
+            print("Tabela OK!")
+            
             content_length = int(self.headers.get('Content-Length', 0))
-            print(f"Content-Length: {content_length}")
-            
             body = self.rfile.read(content_length).decode('utf-8')
-            print(f"Body recebido: {body}")
-            
             params = parse_qs(body)
-            print(f"Params parseados: {params}")
             
             nome = params.get('nome', [''])[0]
             email = params.get('email', [''])[0]
             mensagem = params.get('mensagem', [''])[0]
             
-            print(f"Dados: nome={nome}, email={email}")
+            print(f"Inserindo: {nome}, {email}")
             
-            DATABASE_URL = os.environ.get('DATABASE_URL')
-            if not DATABASE_URL:
-                raise Exception("DATABASE_URL não configurada")
-            
-            print("Conectando ao banco...")
-            conn = psycopg2.connect(DATABASE_URL)
-            cursor = conn.cursor()
-            
-            print("Inserindo dados...")
             cursor.execute(
                 "INSERT INTO feedback (nome, email, mensagem) VALUES (%s, %s, %s)",
                 (nome, email, mensagem)
