@@ -195,6 +195,7 @@
     if (feedbackForm && feedbackMessage) {
         feedbackForm.addEventListener('submit', function(e) {
             e.preventDefault();
+            console.log('Enviando feedback...');
 
             const formData = new FormData(feedbackForm);
 
@@ -202,8 +203,13 @@
                 method: 'POST',
                 body: formData
             })
-            .then(response => response.json())
+            .then(response => {
+                console.log('Status:', response.status);
+                console.log('Response:', response);
+                return response.json();
+            })
             .then(data => {
+                console.log('Data:', data);
                 if (data.status === 'success') {
                     feedbackForm.style.display = 'none';
                     feedbackMessage.textContent = '✅ Feedback enviado com sucesso! Obrigado por compartilhar sua opinião.';
@@ -220,8 +226,8 @@
                 }
             })
             .catch(error => {
-                console.error('Erro:', error);
-                feedbackMessage.textContent = '❌ Erro ao enviar feedback. Tente novamente.';
+                console.error('Erro completo:', error);
+                feedbackMessage.textContent = '❌ Erro: ' + error.message;
                 feedbackMessage.style.color = 'red';
                 feedbackMessage.style.display = 'block';
             });
