@@ -2,20 +2,22 @@
 <html lang="pt-BR">
  <head>
   <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>
-   Fundação Cultural Helmy Wendt Mayer - Início
-  </title>
-  <meta content="Fundação Cultural de Canoinhas. Museu, Biblioteca e Arquivo Histórico. Preservando a cultura e história local." name="description"/>
-  <meta content="Fundação Cultural, Canoinhas, Museu, Biblioteca, Arquivo, Cultura, História, Santa Catarina" name="keywords"/>
-  <meta content="Fundação Cultural Helmy Wendt Mayer" name="author"/>
-  <meta content="Fundação Cultural Helmy Wendt Mayer" property="og:title"/>
-  <meta content="Conheça o patrimônio cultural de Canoinhas: museu, biblioteca e arquivo histórico." property="og:description"/>
-  <meta content="website" property="og:type"/>
-  <meta content="pt_BR" property="og:locale"/>
-  <link href="./CSS/style.css" rel="stylesheet"/>
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'>
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"></noscript>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="theme-color" content="#2c3e50"/>
+  <title>Fundação Cultural Helmy Wendt Mayer - Início</title>
+  <meta name="description" content="Fundação Cultural de Canoinhas. Museu, Biblioteca e Arquivo Histórico. Preservando a cultura e história local."/>
+  <meta name="keywords" content="Fundação Cultural, Canoinhas, Museu, Biblioteca, Arquivo, Cultura, História, Santa Catarina"/>
+  <meta name="author" content="Fundação Cultural Helmy Wendt Mayer"/>
+  <meta property="og:title" content="Fundação Cultural Helmy Wendt Mayer"/>
+  <meta property="og:description" content="Conheça o patrimônio cultural de Canoinhas: museu, biblioteca e arquivo histórico."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:locale" content="pt_BR"/>
+  <link rel="icon" type="image/png" href="./Imagens/logo.png"/>
+  <link rel="manifest" href="./manifest.json"/>
+  <link rel="stylesheet" href="./CSS/style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
  </head>
  <body>
   <a class="skip-link sr-only" href="#conteudo" tabindex="0">
@@ -123,13 +125,13 @@
     <div>
       <h2>Redes Sociais</h2>
         <p>
-          <a href="https://www.facebook.com/prefeituradecanoinhas" target="_blank" class="footer-link">
-            <img src="./Imagens/facebook.png" alt="" width="36" height="36" style="vertical-align:middle;margin-right:10px;"> Facebook
+          <a href="https://www.facebook.com/prefeituradecanoinhas" target="_blank" rel="noopener noreferrer" class="footer-link">
+            <img src="./Imagens/facebook.png" alt="Ícone Facebook" width="36" height="36" style="vertical-align:middle;margin-right:10px;"> Facebook
           </a>
         </p>
         <p>
-          <a href="https://www.instagram.com/prefeituracanoinhas_oficial" target="_blank" class="footer-link">
-            <img src="./Imagens/instagram.png" alt="" width="36" height="36" style="vertical-align:middle;margin-right:10px;"> Instagram
+          <a href="https://www.instagram.com/prefeituracanoinhas_oficial" target="_blank" rel="noopener noreferrer" class="footer-link">
+            <img src="./Imagens/instagram.png" alt="Ícone Instagram" width="36" height="36" style="vertical-align:middle;margin-right:10px;"> Instagram
           </a>
         </p>
     </div>
@@ -143,10 +145,10 @@
 
     <div>
       <h2>Links Úteis</h2>
-      <p><a href="https://canoinhas.atende.net/" class="footer-link">Prefeitura de Canoinhas</a></p>
-      <p><a href="https://canoinhas.atende.net/transparencia/" class="footer-link">Portal da Transparência</a></p>
-      <p><a href="https://canoinhas.atende.net/cidadao/acesso-informacao/conheca-a-lei#:~:text=A%20Lei%20n%C2%BA%2012.527%2C%20sancionada%20em%2018%20de,decorridos%20180%20%28cento%20e%20oitenta%29%20dias%20da%20publica%C3%A7%C3%A3o." class="footer-link">Lei de Acesso à Informação</a></p>
-      <p><a href="https://canoinhas.atende.net/cidadao/pagina/politica-de-privacidade-e-protecao-de-dados-pessoais" class="footer-link">Política de Privacidade</a></p>
+      <p><a href="https://canoinhas.atende.net/" target="_blank" rel="noopener noreferrer" class="footer-link">Prefeitura de Canoinhas</a></p>
+      <p><a href="https://canoinhas.atende.net/transparencia/" target="_blank" rel="noopener noreferrer" class="footer-link">Portal da Transparência</a></p>
+      <p><a href="https://canoinhas.atende.net/cidadao/acesso-informacao/conheca-a-lei" target="_blank" rel="noopener noreferrer" class="footer-link">Lei de Acesso à Informação</a></p>
+      <p><a href="https://canoinhas.atende.net/cidadao/pagina/politica-de-privacidade-e-protecao-de-dados-pessoais" target="_blank" rel="noopener noreferrer" class="footer-link">Política de Privacidade</a></p>
     </div>
   </div>
 
@@ -188,14 +190,13 @@
         });
       });
     }
-// ALTERAÇÃO 3: Adicionado JavaScript para o feedback do formulário
+// Sistema de Feedback - Envia dados para API e salva no banco Supabase
     const feedbackForm = document.getElementById('feedbackForm');
     const feedbackMessage = document.getElementById('feedback-message');
 
     if (feedbackForm && feedbackMessage) {
         feedbackForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            console.log('Enviando feedback...');
 
             const formData = new FormData(feedbackForm);
             const urlEncoded = new URLSearchParams(formData);
@@ -207,13 +208,8 @@
                 },
                 body: urlEncoded
             })
-            .then(response => {
-                console.log('Status:', response.status);
-                console.log('Response:', response);
-                return response.json();
-            })
+            .then(response => response.json())
             .then(data => {
-                console.log('Data:', data);
                 if (data.status === 'success') {
                     feedbackForm.style.display = 'none';
                     feedbackMessage.textContent = '✅ Feedback enviado com sucesso! Obrigado por compartilhar sua opinião.';
@@ -230,7 +226,7 @@
                 }
             })
             .catch(error => {
-                console.error('Erro completo:', error);
+                console.error('Erro:', error);
                 feedbackMessage.textContent = '❌ Erro: ' + error.message;
                 feedbackMessage.style.color = 'red';
                 feedbackMessage.style.display = 'block';
