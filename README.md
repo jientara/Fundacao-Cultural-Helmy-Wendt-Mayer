@@ -98,7 +98,7 @@ O site está configurado para deploy automático:
 3. Build e deploy automático
 4. Site atualizado em produção
 
-## ⚡ Otimizações Implementadas
+##  Otimizações Implementadas
 
 ### Performance
 -  CSS crítico inline
