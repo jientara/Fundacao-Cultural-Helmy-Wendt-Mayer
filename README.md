@@ -1,31 +1,35 @@
 # Fundação Cultural Helmy Wendt Mayer - Site Institucional
 
-## 📋 Sobre o Projeto
+##  Sobre o Projeto
 Site institucional da Fundação Cultural Helmy Wendt Mayer de Canoinhas/SC, apresentando informações sobre o Museu, Biblioteca e Arquivo Histórico.
 
-## 🛠️ Tecnologias Utilizadas
+** Site:** https://fchwm.vercel.app
+
+##  Tecnologias Utilizadas
 
 ### Frontend
-- **HTML5**: Estrutura das páginas
-- **CSS3**: Estilização e responsividade
-- **JavaScript**: Interatividade e comunicação com a API
+- **HTML5**: Estrutura semântica das páginas
+- **CSS3**: Estilização responsiva e moderna
+- **JavaScript**: Interatividade e comunicação com API
+- **CSS Crítico Inline**: Otimização de performance
 
 ### Backend
-- **Python 3**: Linguagem de programação da API
-- **psycopg2**: Biblioteca para conexão com PostgreSQL
+- **Python 3**: Linguagem da API
+- **psycopg2**: Conexão com PostgreSQL
 - **Vercel Serverless Functions**: Hospedagem da API
 
 ### Banco de Dados
-- **Supabase (PostgreSQL)**: Armazenamento dos feedbacks
+- **Supabase (PostgreSQL)**: Armazenamento de feedbacks
 
-### Hospedagem
+### Hospedagem & Deploy
 - **Vercel**: Deploy automático via GitHub
+- **GitHub**: Controle de versão
 
-## 📁 Estrutura do Projeto
+##  Estrutura do Projeto
 
 ```
 ├── api/
-│   └── feedback.py          # API serverless para processar feedbacks
+│   └── feedback.py          # API serverless para feedbacks
 ├── public/
 │   ├── CSS/
 │   │   └── style.css        # Estilos do site
@@ -33,13 +37,16 @@ Site institucional da Fundação Cultural Helmy Wendt Mayer de Canoinhas/SC, apr
 │   ├── index.html           # Página inicial
 │   ├── museu.html           # Página do museu
 │   ├── biblioteca.html      # Página da biblioteca
-│   └── arquivo.html         # Página do arquivo histórico
+│   ├── arquivo.html         # Página do arquivo
+│   ├── manifest.json        # PWA manifest
+│   ├── robots.txt           # SEO
+│   └── sitemap.xml          # SEO
 ├── requirements.txt         # Dependências Python
-├── vercel.json             # Configuração do Vercel
-└── README.md               # Este arquivo
+├── vercel.json             # Configuração Vercel
+└── README.md               # Documentação
 ```
 
-## 🔄 Fluxo de Funcionamento do Sistema de Feedback
+##  Fluxo de Funcionamento do Sistema de Feedback
 
 ### 1. Frontend (index.html)
 - Usuário preenche o formulário com nome, email e mensagem
@@ -64,14 +71,14 @@ Site institucional da Fundação Cultural Helmy Wendt Mayer de Canoinhas/SC, apr
   - `mensagem`: Mensagem do feedback
   - `created_at`: Data e hora do registro
 
-## 🔐 Variáveis de Ambiente
+##  Variáveis de Ambiente
 
 Para o funcionamento correto, é necessário configurar no Vercel:
 
 - `DATABASE_URL`: String de conexão com o Supabase
   - Formato: `postgresql://postgres.[PROJECT-REF]:[PASSWORD]@[HOST].pooler.supabase.com:6543/postgres`
 
-## 🚀 Como Visualizar os Feedbacks
+##  Como Visualizar os Feedbacks
 
 ### Opção 1: Supabase Dashboard
 1. Acesse [supabase.com](https://supabase.com)
@@ -83,7 +90,7 @@ Para o funcionamento correto, é necessário configurar no Vercel:
 1. No Supabase, vá em "SQL Editor"
 2. Execute: `SELECT * FROM feedback ORDER BY created_at DESC;`
 
-## 📦 Deploy
+##  Deploy
 
 O site está configurado para deploy automático:
 1. Push para o repositório GitHub
@@ -91,24 +98,85 @@ O site está configurado para deploy automático:
 3. Build e deploy automático
 4. Site atualizado em produção
 
-## 🔗 Links Úteis
+## ⚡ Otimizações Implementadas
 
-- **Site em Produção**: [Inserir URL do Vercel]
-- **Repositório GitHub**: [Inserir URL do GitHub]
-- **Supabase Dashboard**: [Inserir URL do projeto Supabase]
+### Performance
+-  CSS crítico inline
+-  Preconnect para fontes e recursos externos
+-  Preload de recursos críticos
+-  Headers de cache otimizados
+-  Lazy loading de iframe (Google Maps)
+-  Min-height para evitar CLS
 
-## 👨‍💻 Desenvolvimento
+### SEO
+-  Meta tags completas em todas as páginas
+-  Dados estruturados JSON-LD
+-  robots.txt e sitemap.xml
+-  Meta descriptions únicas
+-  Open Graph tags
 
-Para rodar localmente:
-1. Clone o repositório
-2. Configure as variáveis de ambiente
-3. Instale as dependências: `pip install -r requirements.txt`
-4. Use o Vercel CLI para testar: `vercel dev`
+### Acessibilidade
+-  ARIA labels e roles
+-  Skip links
+-  Alt text descritivo
+-  Estrutura HTML5 semântica
+-  Contraste adequado
 
-## 📝 Observações Técnicas
+### Segurança
+-  rel="noopener noreferrer" em links externos
+-  SSL obrigatório no banco de dados
+-  Validação de dados no backend
 
-- A API usa SSL obrigatório (`sslmode='require'`) para conexão segura com o Supabase
-- O formulário envia dados em formato `application/x-www-form-urlencoded`
-- CORS está habilitado para permitir requisições do frontend
-- A tabela é criada automaticamente na primeira execução
-- Validação de campos obrigatórios no backend
+### PWA
+-  manifest.json
+-  theme-color
+-  Favicon
+
+##  Resultados
+
+- **SEO**: 100/100
+- **Acessibilidade**: 100/100
+- **Melhores Práticas**: 100/100
+- **Performance**: Otimizada
+
+##  Desenvolvimento Local
+
+```bash
+# Clone o repositório
+git clone [URL_DO_REPOSITORIO]
+
+# Instale as dependências Python
+pip install -r requirements.txt
+
+# Configure a variável de ambiente
+# Crie arquivo .env com:
+DATABASE_URL=postgresql://...
+
+# Rode localmente com Vercel CLI
+npm i -g vercel
+vercel dev
+```
+
+##  Observações Técnicas
+
+- API usa SSL obrigatório para conexão segura
+- Formulário envia dados em formato URL-encoded
+- CORS habilitado para requisições do frontend
+- Tabela criada automaticamente na primeira execução
+- Validação de campos no backend
+- Cache configurado para assets estáticos
+- Fontes carregadas de forma assíncrona
+
+##  Próximos Passos
+
+- [ ] Otimizar imagens (reduzir de 3.3MB para ~500KB)
+- [ ] Implementar Service Worker para PWA completo
+- [ ] Adicionar página de administração de feedbacks
+- [ ] Implementar sistema de busca no acervo
+
+##  Contato
+
+**Fundação Cultural Helmy Wendt Mayer**
+-  (47) 3622-0609
+-  Rua Vidal Ramos, 632 - Centro, Canoinhas/SC
+-  https://fchwm.vercel.app
