@@ -328,60 +328,55 @@ img, picture, video, iframe, embed, object { max-width: 100%; height: auto; }
 /* Segurança extra: força que nada dentro do header cause overflow horizontal */
 .header * { max-width: 100%; box-sizing: border-box; }
 
-/* Bottom navigation (mobile) - texto only */
+/* Bottom navigation (mobile) - layout horizontal como footer */
 .bottom-nav {
   display: none;
-  position: fixed;
+  position: relative;
   left: 0;
   right: 0;
-  bottom: 0;
-  height: 60px;
-  background: var(--white);
-  border-top: 2px solid rgba(0,77,41,0.2);
-  box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
-  z-index: 1200;
-  padding: 0;
+  bottom: auto;
+  height: auto;
+  background: transparent;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  box-shadow: none;
+  z-index: auto;
+  padding: 1.5rem;
   margin: 0;
-  display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  align-items: stretch;
-  gap: 0;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
   width: 100%;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
 }
 
 .bottom-nav__item {
   color: var(--primary-color);
   text-decoration: none;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 500;
   padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: inline-block;
   text-align: center;
-  flex: 1;
-  height: 100%;
+  flex: 0;
+  height: auto;
   transition: all 0.15s ease;
-  border-right: 1px solid rgba(0,0,0,0.05);
-}
-
-.bottom-nav__item:last-child {
-  border-right: none;
+  border: none;
 }
 
 .bottom-nav__item:hover {
-  background: rgba(0,77,41,0.06);
+  background: transparent;
   color: var(--accent-color);
+  text-decoration: underline;
 }
 
 .bottom-nav__item--active {
   color: var(--accent-color);
   font-weight: 700;
-  background: rgba(0,34,68,0.05);
-  border-bottom: 3px solid var(--accent-color);
-  padding-bottom: 3px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  text-decoration: underline;
 }
 
 /* esconder qualquer SVG ou ícone remanescente */
@@ -400,11 +395,11 @@ img, picture, video, iframe, embed, object { max-width: 100%; height: auto; }
   }
   
   main {
-    padding-bottom: 70px;
+    padding-bottom: 0;
   }
   
   footer {
-    margin-bottom: 70px;
+    margin-bottom: 0;
   }
 }
 
