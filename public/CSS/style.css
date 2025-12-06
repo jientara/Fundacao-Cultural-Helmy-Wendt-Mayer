@@ -205,6 +205,8 @@ body {
   max-width: 1200px; margin: 0 auto; padding: 0 2rem;
   display: flex; justify-content: space-between; align-items: center;
 }
+/* Permite posicionamento absoluto de elementos dentro do container (ex: botão móvel) */
+.nav-container { position: relative; }
 /* Permite que itens internos encolham corretamente e evita overflow causado por texto longo */
 .nav-container, .nav-container * { min-width: 0; }
 
@@ -305,12 +307,26 @@ body {
 
 @media (max-width: 820px) {
   .mobile-menu-btn { display: block; }
+  /* Posiciona o botão do menu em absolute para que ele não seja empurrado pelo texto do logo */
+  .mobile-menu-btn {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1100;
+  }
   .nav-menu {
     display: none; position: absolute; top: 100%; left: 0; width: 100%; background: var(--primary-color);
     flex-direction: column; padding: 1rem 2rem; box-shadow: var(--shadow);
   }
   .nav-menu.active { display: flex; }
 }
+
+/* Garante que imagens, iframes e mídia não excedam a largura da viewport */
+img, picture, video, iframe, embed, object { max-width: 100%; height: auto; }
+
+/* Segurança extra: força que nada dentro do header cause overflow horizontal */
+.header * { max-width: 100%; box-sizing: border-box; }
 
 /* Estilo específico para o SVG do botão móvel */
 .mobile-menu-btn svg {
