@@ -44,10 +44,10 @@
 .section, .section.historia, .section.exposicoes, .section.galeria, .section.visitas, .section.curiosidades {
   background: var(--light-bg);
   border-radius: var(--radius);
-  padding-left: 2rem;
-  padding-right: 2rem;
+  padding: 2rem;
   margin-bottom: 2.5rem;
   box-shadow: 0 2px 8px rgba(44,85,48,0.06);
+  overflow: hidden;
 }
 
 /* Estilos para o hero e footer */
@@ -221,9 +221,9 @@ body {
   .services-grid { grid-template-columns: 1fr; gap: 1rem; margin-top: 1.25rem; }
   .service-card { padding: 1rem; border-radius: 12px; }
   .nav-menu { padding: 0.75rem 1rem; }
-  .section { padding-left: 1rem; padding-right: 1rem; }
+  .section { padding: 1.5rem 1rem; }
   .section .container > p { font-size: 1rem; }
-  .section .container > ul { font-size: 1rem; padding-left: 1.5rem; margin-left: 0; }
+  .section .container > ul { font-size: 1rem; padding-left: 1.2rem; margin-left: 0; list-style-position: inside; }
   main { padding: 0 1rem; }
   .footer-content { padding-left: 1rem; padding-right: 1rem; }
 }
