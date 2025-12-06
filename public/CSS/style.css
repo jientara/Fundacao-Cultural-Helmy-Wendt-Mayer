@@ -167,6 +167,14 @@
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
+/* Evita scroll horizontal no mobile e restringe gestos para pan-vertical */
+html, body {
+  overflow-x: hidden;
+  touch-action: pan-y;
+  -ms-touch-action: pan-y;
+  overscroll-behavior-x: contain;
+}
+
 /* Estilos do corpo */
 body {
   margin: 0;
@@ -231,6 +239,12 @@ body {
 }
 .logo-text {
   white-space: nowrap; /* evita quebrar em duas linhas */
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* Limita o comprimento do texto do logo para não empurrar o botão do menu
+     calcula-se a largura disponível com base na viewport */
+  max-width: calc(100vw - 140px);
 }
 .logo::before {
   /* Não usar pseudo-elemento quando já há uma imagem no DOM (evita duplicação)
@@ -241,6 +255,10 @@ body {
 /* Menu de navegação */
 .menu__toggle, .mobile-menu-btn {
   display: none; background: none; border: none; color: var(--white); font-size: 1.5rem; cursor: pointer;
+  /* Garante que o botão de menu fique visível e não seja empurrado para fora */
+  position: relative;
+  z-index: 1001;
+  padding: 0.35rem 0.6rem;
 }
 .nav-menu {
   display: flex; list-style: none; gap: 2rem;
