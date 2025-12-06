@@ -228,7 +228,9 @@ body {
   .section { padding: 1.5rem; margin: 0 1rem 2.5rem 1rem; }
   .section .container { padding: 0; max-width: 100%; }
   .section .container > p { font-size: 1rem; }
-  .section .container > ul { font-size: 1rem; padding-left: 1.5rem; margin: 0 0 1rem 0; list-style-position: outside; }
+  .section .container > ul { font-size: 1rem; padding-left: 0; margin: 0 0 1rem 0; list-style: none; }
+  .section .container > ul li { padding-left: 1.2rem; position: relative; }
+  .section .container > ul li::before { content: "✓"; position: absolute; left: 0; color: var(--primary-color); font-weight: bold; }
   main { padding: 0; }
   .footer-content { padding-left: 1rem; padding-right: 1rem; }
 }
