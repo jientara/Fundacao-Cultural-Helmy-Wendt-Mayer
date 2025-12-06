@@ -221,10 +221,17 @@
     const navMenu = document.getElementById('navMenu');
 
     if (mobileMenuBtn && navMenu) {
+      const dotsSvg = '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false" role="img">'
+        + '<circle cx="12" cy="6" r="1.6"></circle>'
+        + '<circle cx="12" cy="12" r="1.6"></circle>'
+        + '<circle cx="12" cy="18" r="1.6"></circle>'
+        + '</svg>';
+
       mobileMenuBtn.addEventListener('click', () => {
         const isOpen = navMenu.classList.toggle('active');
         mobileMenuBtn.setAttribute('aria-expanded', isOpen);
-        mobileMenuBtn.innerHTML = isOpen ? '✕' : '☰';
+        mobileMenuBtn.innerHTML = isOpen ? '✕' : dotsSvg;
+        mobileMenuBtn.setAttribute('aria-label', isOpen ? 'Fechar menu' : 'Abrir menu');
       });
 
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -238,7 +245,8 @@
             if (navMenu.classList.contains('active')) {
               navMenu.classList.remove('active');
               mobileMenuBtn.setAttribute('aria-expanded', false);
-              mobileMenuBtn.innerHTML = '☰';
+              mobileMenuBtn.innerHTML = dotsSvg;
+              mobileMenuBtn.setAttribute('aria-label', 'Abrir menu');
             }
           }
         });

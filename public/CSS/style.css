@@ -312,6 +312,19 @@ body {
   .nav-menu.active { display: flex; }
 }
 
+/* Estilo específico para o SVG do botão móvel */
+.mobile-menu-btn svg {
+  width: 22px;
+  height: 22px;
+  display: block;
+  fill: currentColor;
+}
+
+/* Quando o botão mostra o '✕' (texto), mantenha a mesma cor e tamanho visual */
+.mobile-menu-btn { font-size: 20px; line-height: 1; }
+.mobile-menu-btn:focus { outline: 2px solid rgba(255,255,255,0.12); }
+.mobile-menu-btn { touch-action: manipulation; border-radius: 6px; }
+
 /* Conteúdo principal */
 main { 
   width: 100%;
