@@ -364,6 +364,30 @@ img, picture, video, iframe, embed, object { max-width: 100%; height: auto; }
   main { padding-bottom: 72px; }
 }
 
+/* Ajustes finos: reduz tamanho de ícones e texto da bottom-nav para evitar que fiquem gigantes */
+.bottom-nav {
+  padding: 6px 8px;
+  gap: 6px;
+}
+.bottom-nav__item {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-size: 12px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+}
+.bottom-nav__icon,
+.bottom-nav__item svg { width: 20px !important; height: 20px !important; display: block; vertical-align: middle; }
+.bottom-nav__item span { font-size: 11px; line-height: 1; }
+.bottom-nav__item img { width: 20px !important; height: auto !important; }
+.bottom-nav__item--active { color: var(--accent-color); }
+
+/* Segurança: garantir que SVG inline não sejam afetados por estilos globais maiores */
+.bottom-nav svg { max-width: 28px; max-height: 28px; }
+
 /* Estilo específico para o SVG do botão móvel */
 .mobile-menu-btn svg {
   width: 22px;
