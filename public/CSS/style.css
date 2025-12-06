@@ -221,8 +221,9 @@ body {
   .services-grid { grid-template-columns: 1fr; gap: 1rem; margin-top: 1.25rem; }
   .service-card { padding: 1rem; border-radius: 12px; }
   .nav-menu { padding: 0.75rem 1rem; }
-  .section .container > p { font-size: 1rem; padding-left: 0.6rem; padding-right: 0.6rem; }
-  .section .container > ul { font-size: 1rem; padding-left: 2rem; padding-right: 0.6rem; margin-left: 0; }
+  .section { padding-left: 1rem; padding-right: 1rem; }
+  .section .container > p { font-size: 1rem; }
+  .section .container > ul { font-size: 1rem; padding-left: 1.5rem; margin-left: 0; }
   main { padding: 0 1rem; }
   .footer-content { padding-left: 1rem; padding-right: 1rem; }
 }
