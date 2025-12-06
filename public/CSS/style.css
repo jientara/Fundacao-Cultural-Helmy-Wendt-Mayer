@@ -325,10 +325,55 @@ body {
 /* Garante que imagens, iframes e mídia não excedam a largura da viewport */
 img, picture, video, iframe, embed, object { max-width: 100%; height: auto; }
 
+/* Skip link para acessibilidade */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--accent-color);
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.sr-only:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0.5rem 1rem;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
 /* Segurança extra: força que nada dentro do header cause overflow horizontal */
 .header * { max-width: 100%; box-sizing: border-box; }
 
 /* Footer - 4 colunas em desktop */
+.footer {
+  background: #111;
+  color: #fff;
+  padding: 2rem 0;
+}
+
 .footer-content {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -336,6 +381,31 @@ img, picture, video, iframe, embed, object { max-width: 100%; height: auto; }
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
+}
+
+.footer h2 {
+  font-size: 1.5rem;
+  margin: 0 0 1rem;
+  color: #fff;
+}
+
+.footer-link {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-link:hover {
+  color: var(--accent-color);
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 2rem;
+  margin-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.7);
 }
 
 /* Footer responsivo - 2 colunas em tablets */
