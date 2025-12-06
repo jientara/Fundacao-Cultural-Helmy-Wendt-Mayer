@@ -197,6 +197,25 @@
     © <span id="ano">2025</span> Fundação Cultural Helmy Wendt Mayer. Todos os direitos reservados.
   </div>
 </footer>
+<!-- Bottom navigation (mobile) -->
+<nav class="bottom-nav" aria-label="Navegação principal">
+  <a class="bottom-nav__item" href="/index.html">
+    <svg class="bottom-nav__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path></svg>
+    <span>Início</span>
+  </a>
+  <a class="bottom-nav__item bottom-nav__item--active" href="/museu.html">
+    <svg class="bottom-nav__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L2 7v2h20V7L12 2zM4 10v7h16v-7H4z"></path></svg>
+    <span>Museu</span>
+  </a>
+  <a class="bottom-nav__item" href="/biblioteca.html">
+    <svg class="bottom-nav__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4v16h18V4H3zm16 14H5V6h14v12z"></path></svg>
+    <span>Biblioteca</span>
+  </a>
+  <a class="bottom-nav__item" href="/arquivo.html">
+    <svg class="bottom-nav__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6v20h12V8l-4-6zM6 4h7v4h4v12H6V4z"></path></svg>
+    <span>Arquivo</span>
+  </a>
+</nav>
 <script>
     document.getElementById('ano').textContent = new Date().getFullYear();
       const mobileMenuBtn = document.getElementById('mobileMenuBtn');
