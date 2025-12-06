@@ -260,6 +260,24 @@ body {
 
 /* Evita overflow do cabeçalho em casos extremos */
 .header { overflow-x: hidden; }
+
+/* Ajustes responsivos para o logo em telas pequenas - evita empurrar o botão do menu */
+@media (max-width: 480px) {
+  .logo-img { width: 48px; height: 48px; }
+  .logo-text {
+    font-size: 0.92rem;
+    max-width: calc(100vw - 120px);
+    white-space: normal; /* permite quebra em 2 linhas em vez de empurrar */
+    line-height: 1.05;
+  }
+  .nav-container { padding: 0 0.75rem; }
+}
+
+/* Em larguras muito pequenas, ocultamos o texto para priorizar o ícone e o botão do menu */
+@media (max-width: 340px) {
+  .logo-text { display: none; }
+  .logo-img { width: 44px; height: 44px; }
+}
 .logo::before {
   /* Não usar pseudo-elemento quando já há uma imagem no DOM (evita duplicação)
      escondemos o ::before e usamos a <img class="logo-img"> para controle total */
