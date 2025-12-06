@@ -221,6 +221,7 @@ body {
   .service-card { padding: 1rem; border-radius: 12px; }
   .nav-menu { padding: 0.75rem 1rem; }
   .section .container > p, .section .container > ul { font-size: 1rem; padding-left: 0.6rem; padding-right: 0.6rem; }
+  .section ul { padding-left: 1.5rem; margin-left: 0; }
   main { padding: 0 1rem; }
   .footer-content { padding-left: 1rem; padding-right: 1rem; }
 }
