@@ -205,6 +205,8 @@ body {
   max-width: 1200px; margin: 0 auto; padding: 0 2rem;
   display: flex; justify-content: space-between; align-items: center;
 }
+/* Permite que itens internos encolham corretamente e evita overflow causado por texto longo */
+.nav-container, .nav-container * { min-width: 0; }
 
 /* Regras adicionais para dispositivos móveis (melhorar legibilidade e evitar overflow) */
 @media (max-width: 820px) {
@@ -246,6 +248,18 @@ body {
      calcula-se a largura disponível com base na viewport */
   max-width: calc(100vw - 140px);
 }
+
+/* Melhor comportamento em flexbox: permite que o texto do logo encolha sem forçar overflow */
+.logo { flex: 0 1 auto; min-width: 0; }
+.logo-text { flex: 1 1 auto; min-width: 0; }
+
+/* Garante que o container do menu respeite a largura disponível e que o botão móvel
+   fique sempre visível dentro da viewport */
+.menu { display: flex; align-items: center; gap: 0.5rem; }
+.mobile-menu-btn { flex: 0 0 auto; }
+
+/* Evita overflow do cabeçalho em casos extremos */
+.header { overflow-x: hidden; }
 .logo::before {
   /* Não usar pseudo-elemento quando já há uma imagem no DOM (evita duplicação)
      escondemos o ::before e usamos a <img class="logo-img"> para controle total */
