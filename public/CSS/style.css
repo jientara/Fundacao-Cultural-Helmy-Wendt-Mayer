@@ -86,7 +86,7 @@
   text-align: center;
 }
 
-.section .container > p, .section .container > ul {
+.section .container > p {
   font-size: 1.1rem;
   color: var(--text-dark);
   max-width: 800px;
@@ -96,8 +96,12 @@
 }
 
 .section .container > ul {
+  font-size: 1.1rem;
+  color: var(--text-dark);
+  margin-bottom: 1.2rem;
   padding-left: 2.5rem;
   margin-left: 0;
+  margin-right: 0;
 }
 /* Estilos para a seção Hero */
 
@@ -222,8 +226,9 @@ body {
   .service-card { padding: 1rem; border-radius: 12px; }
   .nav-menu { padding: 0.75rem 1rem; }
   .section { padding: 1.5rem 1rem; }
+  .section .container { padding: 0; }
   .section .container > p { font-size: 1rem; }
-  .section .container > ul { font-size: 1rem; padding-left: 1.2rem; margin-left: 0; list-style-position: inside; }
+  .section .container > ul { font-size: 1rem; padding-left: 0; padding-right: 0; margin-left: 0; margin-right: 0; list-style-position: inside; }
   main { padding: 0 1rem; }
   .footer-content { padding-left: 1rem; padding-right: 1rem; }
 }
